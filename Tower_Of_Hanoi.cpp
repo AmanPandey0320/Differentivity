@@ -1,25 +1,20 @@
-#include<bits/stdc++.h>
-#define ll long long
+#include <iostream>
 using namespace std;
-
-void solve(int n, int s, int d, int h, int &count){
-   count++;
-   if (n==1){
-        cout<<"Moving from"<<s<<"->"<<d<<"step-"<<count<<endl;
+void steps(int n, char s, char a, char d)
+{
+    if (n == 1)
+    {
+        cout << n << s << d << endl;
         return;
     }
-    solve(n-1,s,h,d,count);
-    cout<<"Moving from"<<s<<"->"<<d<<"step-"<<count<<endl;
-    solve(n-1,h,d,s,count);
-    return;
+    steps(n - 1, s, d, a);
+    cout << n << s << d << endl;
+    steps(n - 1, a, s, d);
 }
-
-int main(){
+int main()
+{
     int n;
-    cin>>n;
-    int s=1;
-    int h=2;
-    int d=3;
-    int count=0;
-    solve(n,s,d,h,count);
+    cin >> n;
+    steps(n, 'A', 'B', 'C');
+    return 0;
 }
